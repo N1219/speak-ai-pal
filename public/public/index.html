@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>英语口语练习 - AI Speaking Practice</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <h1>英语口语练习</h1>
+      <span class="subtitle">Real conversation. Real progress.</span>
+    </header>
+
+    <!-- Tab Navigation -->
+    <nav class="main-nav">
+      <button class="nav-tab active" data-tab="practice">练习</button>
+      <button class="nav-tab" data-tab="bookmarks">收藏</button>
+      <button class="nav-tab" data-tab="dashboard">数据</button>
+      <div class="nav-right">
+        <button id="checkin-btn" class="checkin-btn" title="今日打卡">🔥 打卡</button>
+        <span id="streak-badge" class="streak-badge">0天</span>
+      </div>
+    </nav>
+
+    <!-- Practice View -->
+    <div id="view-practice">
+    <!-- Scenario Selection -->
+    <section id="scenario-section" class="scenario-section">
+      <h2>选择练习场景</h2>
+      <div id="scenario-grid" class="scenario-grid">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- Chat Area (hidden initially) -->
+    <main id="chat-section" class="chat-section hidden">
+      <div class="chat-header">
+        <div class="chat-header-row">
+          <button id="back-btn" class="btn-icon" title="返回场景选择">←</button>
+          <div id="active-scenario-info" class="active-scenario-info"></div>
+          <span id="conn-status" class="conn-status" title="点击重连"></span>
+          <button id="end-session-btn" class="btn-secondary">结束总结</button>
+        </div>
+        <div class="chat-header-row chat-toolbar">
+          <select id="voice-select" class="voice-select">
+            <option value="en-US-female">🇺🇸 美音·女声</option>
+            <option value="en-US-male">🇺🇸 美音·男声</option>
+            <option value="en-GB-female">🇬🇧 英音·女声</option>
+            <option value="en-GB-male">🇬🇧 英音·男声</option>
+          </select>
+          <div class="rate-control">
+            <button id="rate-slow" class="rate-btn" title="减速">🐢</button>
+            <span id="rate-label" class="rate-label">1×</span>
+            <button id="rate-fast" class="rate-btn" title="加速">🐇</button>
+          </div>
+          <button id="ipa-toggle" class="ipa-toggle" title="音标显示">aɪ piː eɪ</button>
+        </div>
+      </div>
+
+      <div id="char-box" class="char-box hidden"></div>
+      <div id="chat-messages" class="chat-messages"></div>
+
+      <!-- Inline corrections toast -->
+      <!-- Input Area -->
+      <div class="input-area">
+        <div class="voice-controls">
+          <button id="record-btn" class="btn-record" title="点击开始/停止录音">
+            <span class="record-icon">🎤</span>
+            <span class="record-label">点击录音</span>
+          </button>
+          <div id="recording-status" class="recording-status hidden">
+            <span class="pulse"></span> 正在聆听...
+          </div>
+        </div>
+        <div class="text-input-row">
+          <input
+            type="text"
+            id="text-input"
+            class="text-input"
+            placeholder="或直接输入英文..."
+            autocomplete="off"
+          />
+          <button id="send-btn" class="btn-send" title="发送">发送</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Summary Panel (hidden initially) -->
+    <section id="summary-section" class="summary-section hidden">
+      <div class="summary-header">
+        <h2>📋 课后总结</h2>
+        <button id="new-session-btn" class="btn-primary">开始新练习</button>
+      </div>
+      <div id="summary-content" class="summary-content"></div>
+    </section>
+
+    </div><!-- #view-practice -->
+
+    <!-- Bookmarks View -->
+    <section id="view-bookmarks" class="hidden">
+      <div class="bookmarks-header">
+        <h2>错句本 / 收藏夹</h2>
+        <span id="bookmark-count" class="bookmark-count"></span>
+      </div>
+      <div id="bookmarks-list" class="bookmarks-list"></div>
+      <div id="bookmarks-empty" class="empty-state hidden">
+        <div class="empty-icon">📖</div>
+        <p>还没有收藏任何句子</p>
+        <p class="empty-hint">在对话中点击 AI 回复旁的 ☆ 即可收藏</p>
+      </div>
+    </section>
+
+    <!-- Dashboard View -->
+    <section id="view-dashboard" class="hidden">
+      <div class="dashboard-header"><h2>学习数据</h2></div>
+      <div class="dash-cards">
+        <div class="dash-card"><div class="dash-value" id="dash-total">0</div><div class="dash-label">练习次数</div></div>
+        <div class="dash-card"><div class="dash-value" id="dash-avg">—</div><div class="dash-label">平均评分</div></div>
+        <div class="dash-card"><div class="dash-value" id="dash-streak">0</div><div class="dash-label">连续打卡</div></div>
+        <div class="dash-card"><div class="dash-value" id="dash-favs">0</div><div class="dash-label">收藏句子</div></div>
+      </div>
+      <div class="score-chart" id="score-chart">
+        <h3>最近评分趋势</h3>
+        <div class="chart-bars" id="chart-bars"></div>
+      </div>
+      <div class="checkin-calendar" id="checkin-cal">
+        <h3>打卡日历</h3>
+        <div class="cal-grid" id="cal-grid"></div>
+      </div>
+    </section>
+  </div>
+
+  <script src="app.js?v=5"></script>
+</body>
+</html>

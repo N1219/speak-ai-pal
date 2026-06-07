@@ -1,0 +1,53 @@
+{
+  "sessions": [
+    {
+      "date": "2026-06-06",
+      "score": 7,
+      "scenario": "restaurant",
+      "turns": 4
+    },
+    {
+      "date": "2026-06-06",
+      "score": 5,
+      "scenario": "restaurant",
+      "turns": 0
+    },
+    {
+      "date": "2026-06-07",
+      "score": 3,
+      "scenario": "airport",
+      "turns": 0
+    },
+    {
+      "date": "2026-06-07",
+      "score": 6,
+      "scenario": "interview",
+      "turns": 0
+    },
+    {
+      "date": "2026-06-07",
+      "score": 7,
+      "scenario": "restaurant",
+      "turns": 0
+    }
+  ],
+  "checkins": {
+    "2026-06-06": true,
+    "2026-06-07": true
+  },
+  "favorites": [
+    {
+      "id": 1780728322850,
+      "text": "Hi there! Welcome to the diner—how are you doing today?",
+      "scenario": "restaurant",
+      "date": "2026-06-06"
+    },
+    {
+      "id": 1780800990742,
+      "text": "Welcome to the airport! May I see your passport and boarding pass, please?",
+      "scenario": "airport",
+      "date": "2026-06-07"
+    }
+  ],
+  "customScenarios": []
+}
